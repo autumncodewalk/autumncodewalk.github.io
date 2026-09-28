@@ -2,8 +2,16 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Autumn Code Walk</title>
         <link rel="stylesheet" href="/style.css" />
+        <script>
+            (function() {
+                var saved = localStorage.getItem("theme");
+                var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+                document.documentElement.setAttribute("data-theme", theme);
+            })();
+        </script>
         <script data-goatcounter="https://autumncodewalk.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     </head>
     <body>
@@ -17,6 +25,8 @@
                     <div class="right-links">
                         <a href="/about/" class="nav-bar">About</a>
                         <a href="/statistics/" class="nav-bar">Statistics</a>
+                        <span class="nav-separator">|</span>
+                        <button id="theme-toggle"></button>
                     </div>
                 </div>
             </nav>
