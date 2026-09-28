@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Tiny5");
+
+html {
+    padding: 1rem;
+}
+
+.header {
+    font-family: "Tiny5", sans-serif;
+    text-decoration: none;
+    color: black;
+}
+
+.orange {
+    color: #d45b12;
+}
+
+body {
+    font-family: "Roboto Mono", monospace;
+}
+
+.problem-link {
+    text-decoration: none;
+    color: black;
+    padding: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.problem-link:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.disabled {
+    color: gray;
+    pointer-events: none;
+}
+
+.countdown {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.problem-link.disabled:hover {
+    background-color: transparent;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right-links {
+    display: flex;
+}
+
+.nav-bar {
+    font-family: "Roboto Mono", monospace;
+    font-size: 16px;
+    color: blue;
+    text-decoration: none;
+    padding: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-bar:hover {
+    color: darkblue;
+}
+
+pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ddd;
+    white-space: pre-wrap;
+    user-select: text;
+    max-width: 1000px;
+}
+
+div.flash {
+    color: #000000;
+    font-weight: bold;
+    background-color: #ffffff;
+    padding: 18px;
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+.logout-form {
+    display: inline;
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.username-input {
+    width: 120px;
+    padding: 0;
+    margin: 0;
+
+    border: none;
+    outline: none;
+    background: transparent;
+
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+
+    caret-color: currentColor;
+}
+
+.username-input:focus {
+    outline: none;
+}
+
+#submit-feedback {
+    color: #c0392b;
+    font-weight: 600;
+}
+
+table tr:last-child {
+    border-top: 2px solid #ccc;
+    font-weight: 600;
+}
+
+table tr:last-child td {
+    padding-top: 10px;
+}

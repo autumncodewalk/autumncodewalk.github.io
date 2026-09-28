@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Autumn Code Walk</title>
+        <link rel="stylesheet" href="/style.css" />
+        <script data-goatcounter="https://autumncodewalk.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    </head>
+    <body>
+        <h1>
+            <a href="/" class="header">~AUTUMN C<span class="orange">O</span>DE WALK~</a>
+        </h1>
+        <header>
+            <nav>
+                <div class="container">
+                    <a href="/profile/" class="nav-bar username">user</a>
+                    <div class="right-links">
+                        <a href="/about/" class="nav-bar">About</a>
+                        <a href="/statistics/" class="nav-bar">Statistics</a>
+                    </div>
+                </div>
+            </nav>
+            <hr />
+        </header>
+        <main>
+            <table>
+                <tr>
+                    <td><strong>Username:</strong></td>
+                    <td><span class="username" id="username-change" style="cursor: pointer; border-bottom: 1px dashed #666">user</span></td>
+                </tr>
+                <tr>
+                    <td><strong>First Visit:</strong></td>
+                    <td><span id="first-visit" title="based on localStorage">-</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Last Activity:</strong></td>
+                    <td><span id="last-activity" title="based on localStorage">-</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Solved Problems:</strong></td>
+                    <td><span id="user-solved-count" title="based on localStorage">0</span></td>
+                </tr>
+            </table>
+        </main>
+        <script type="module" src="/_script.js"></script>
+    </body>
+</html>
