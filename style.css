@@ -37,6 +37,7 @@ pre {
     border: 1px solid #ddd;
     white-space: pre-wrap;
     user-select: text;
+    overflow-wrap: anywhere;
 }
 
 header hr {
@@ -86,7 +87,10 @@ h1 {
 }
 
 .nav-bar:hover {
-    color: darkblue;
+    color: #000033;
+    text-shadow:
+        0.3px 0 currentColor,
+        -0.3px 0 currentColor;
 }
 
 /* --- Problem list --- */
@@ -108,6 +112,18 @@ h1 {
 
 .problem-link.solved {
     text-decoration: line-through;
+}
+
+.problem-link.unpublished {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.countdown {
+    margin-left: 8px;
+    font-size: 0.85em;
+    opacity: 0.6;
 }
 
 /* --- Problem page --- */
@@ -181,12 +197,11 @@ h1 {
     color: #6ea8fe;
 }
 
-[data-theme="dark"] .nav-bar:visited {
-    color: #6ea8fe;
-}
-
 [data-theme="dark"] .nav-bar:hover {
-    color: #93c0ff;
+    color: #e2eeff;
+    text-shadow:
+        0.3px 0 currentColor,
+        -0.3px 0 currentColor;
 }
 
 [data-theme="dark"] .problem-link {
@@ -203,6 +218,14 @@ h1 {
 
 [data-theme="dark"] .problem-link.solved {
     color: #666;
+}
+
+[data-theme="dark"] .problem-link.unpublished {
+    color: #666;
+}
+
+[data-theme="dark"] .countdown {
+    color: #999;
 }
 
 [data-theme="dark"] #submit-feedback {
@@ -227,4 +250,10 @@ h1 {
     font: inherit;
     color: inherit;
     padding: 5px;
+}
+
+#theme-toggle:hover {
+    text-shadow:
+        0.3px 0 currentColor,
+        -0.3px 0 currentColor;
 }
