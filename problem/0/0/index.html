@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Autumn Code Walk</title>
+        <link rel="stylesheet" href="/style.css" />
+        <script>
+            (function() {
+                var saved = localStorage.getItem("theme");
+                var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+                document.documentElement.setAttribute("data-theme", theme);
+            })();
+        </script>
+        <script data-goatcounter="https://autumncodewalk.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    </head>
+    <body>
+        <h1>
+            <a href="/" class="header">~AUTUMN C<span class="orange">O</span>DE WALK~</a>
+        </h1>
+        <header>
+            <nav>
+                <div class="container">
+                    <a href="/profile/" class="nav-bar username">user</a>
+                    <div class="right-links">
+                        <a href="/about/" class="nav-bar">About</a>
+                        <a href="/statistics/" class="nav-bar">Statistics</a>
+                        <span class="nav-separator">|</span>
+                        <button id="theme-toggle"></button>
+                    </div>
+                </div>
+            </nav>
+            <hr />
+        </header>
+        <main>
+<p>You are given a text and a list of strings. For each string in the list, you need to find its first occurrence in the text. However, <strong>matches across word boundaries in the text are allowed</strong>.</p>
+<p>Consider the text <code>the quick brown fox jumps over the lazy dog</code> and the strings <code>quic</code>, <code>sover</code>, <code>dog</code>, <code>deer</code>. The first occurrence is taken as the <strong>index of the word the match starts at</strong>. For the first three strings we get the indices <code>1</code>, <code>4</code> and <code>8</code>, respectively, while the string <code>deer</code> is not present.</p>
+<p>The first line of your input is the text where you need to look for occurrences. This text consists of space-separated words. Each line after that is a string for which you need to find the index at which it first appears in the previous text, <strong>or <code>-1</code> if it is not present</strong>. Note that the index is that of the word where <strong>the match begins</strong>. The solution is the sum of all indices (<code>-1</code>s included).</p>
+<h4>Input format</h4>
+<p>First line is the text (haystack), a space-separated list of words, and each subsequent line is a string (needle). Words and search strings consist of lowercase ASCII letters only.</p>
+<h4>Output format</h4>
+<p>The sum of the indices of first occurrences (or <code>-1</code>) for each needle in the haystack.</p>
+<h4>Sample input</h4>
+<pre><code>the quick brown fox jumps over the lazy dog
+quic
+sover
+dog
+deer
+</code></pre>
+<h4>Sample output</h4>
+<p><code>12</code></p>
+
+<p>
+    <strong><a href="input.txt">Your input</a></strong>
+</p>
+<br />
+
+<form id="submit-form">
+    <label for="output"><strong>Your output</strong>:</label>
+    <input id="output" name="output" required autocomplete="off" />
+    <input type="submit" value="Submit" />
+</form>
+<p id="submit-feedback"></p>
+        </main>
+        <script type="module" src="/script.js"></script>
+    </body>
+</html>

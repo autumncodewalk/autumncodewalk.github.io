@@ -179,6 +179,10 @@ h1 {
     background-color: #2a2a2a;
 }
 
+[data-theme="dark"] strong {
+    color: #fff1e9;
+}
+
 [data-theme="dark"] pre {
     background-color: #2a2a2a;
     border-color: #444;
