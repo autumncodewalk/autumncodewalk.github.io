@@ -6,7 +6,7 @@
         <title>Autumn Code Walk</title>
         <link rel="stylesheet" href="/style.css" />
         <script>
-            (function() {
+            (function () {
                 var saved = localStorage.getItem("theme");
                 var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
                 document.documentElement.setAttribute("data-theme", theme);
@@ -33,7 +33,7 @@
             <hr />
         </header>
         <main>
-            <table>
+                        <table>
                 <tr>
                     <td><strong>Username:</strong></td>
                     <td><span class="username" id="username-change" style="cursor: pointer; border-bottom: 1px dashed #666">user</span></td>

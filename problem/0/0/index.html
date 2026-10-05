@@ -6,7 +6,7 @@
         <title>Autumn Code Walk</title>
         <link rel="stylesheet" href="/style.css" />
         <script>
-            (function() {
+            (function () {
                 var saved = localStorage.getItem("theme");
                 var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
                 document.documentElement.setAttribute("data-theme", theme);
@@ -33,7 +33,7 @@
             <hr />
         </header>
         <main>
-<p>You are given a text and a list of strings. For each string in the list, you need to find its first occurrence in the text. However, <strong>matches across word boundaries in the text are allowed</strong>.</p>
+            <p>You are given a text and a list of strings. For each string in the list, you need to find its first occurrence in the text. However, <strong>matches across word boundaries in the text are allowed</strong>.</p>
 <p>Consider the text <code>the quick brown fox jumps over the lazy dog</code> and the strings <code>quic</code>, <code>sover</code>, <code>dog</code>, <code>deer</code>. The first occurrence is taken as the <strong>index of the word the match starts at</strong>. For the first three strings we get the indices <code>1</code>, <code>4</code> and <code>8</code>, respectively, while the string <code>deer</code> is not present.</p>
 <p>The first line of your input is the text where you need to look for occurrences. This text consists of space-separated words. Each line after that is a string for which you need to find the index at which it first appears in the previous text, <strong>or <code>-1</code> if it is not present</strong>. Note that the index is that of the word where <strong>the match begins</strong>. The solution is the sum of all indices (<code>-1</code>s included).</p>
 <h4>Input format</h4>

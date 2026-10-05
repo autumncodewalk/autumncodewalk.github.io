@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Autumn Code Walk</title>
+        <link rel="stylesheet" href="/style.css" />
+        <script>
+            (function () {
+                var saved = localStorage.getItem("theme");
+                var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+                document.documentElement.setAttribute("data-theme", theme);
+            })();
+        </script>
+        <script data-goatcounter="https://autumncodewalk.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    </head>
+    <body>
+        <h1>
+            <a href="/" class="header">~AUTUMN C<span class="orange">O</span>DE WALK~</a>
+        </h1>
+        <header>
+            <nav>
+                <div class="container">
+                    <a href="/profile/" class="nav-bar username">user</a>
+                    <div class="right-links">
+                        <a href="/about/" class="nav-bar">About</a>
+                        <a href="/statistics/" class="nav-bar">Statistics</a>
+                        <span class="nav-separator">|</span>
+                        <button id="theme-toggle"></button>
+                    </div>
+                </div>
+            </nav>
+            <hr />
+        </header>
+        <main>
+            <p>Given a string <strong>consisting only of uppercase letters A–Z</strong>. Your task is to compress this string using a <strong>two-stage compression scheme</strong>.</p>
+<p>First, replace <strong>every maximal run</strong> of the same letter <code>X</code> of length <code>n</code> with the token <code>Xn</code>, e.g.:</p>
+<pre><code>AAABBBBZ -&gt; A3B4Z1
+QWWEEERRRRTTTTTYYYYYY -&gt; Q1W2E3R4T5Y6
+X -&gt; X1
+</code></pre>
+<p>In the <strong>second step</strong>, some <code>Xn</code> runs <strong>can</strong> be replaced with lowercase letters. More precisely, the compression algorithm can use the <strong>26 lowercase letters</strong> to replace some <code>Xn</code> tokens. One lowercase letter can map to <strong>at most one token of form <code>Xn</code></strong>. If replacements occur, the algorithm attaches a <strong>header</strong> at the front of the compressed stream indicating which <code>Xn</code> tokens are replaced followed by <strong>two</strong> semicolons. The <strong>order of the tokens</strong> in the header also establishes their <strong>mapping to the lowercase letters in increasing order</strong>. The header may look like this: <code>A3B1S7;;</code>, which means the token <code>A3</code> is replaced with <code>a</code>, the token <code>B1</code> is replaced with <code>b</code> and the token <code>S7</code> is replaced with <code>c</code>.</p>
+<p>The following examples illustrate possible replacements:</p>
+<pre><code>X1
+-&gt; X1 (no replacements)
+-&gt; X1;;a
+
+A1000Z2
+-&gt; A1000Z2;;ab
+
+A3B2S10A3S10A3S10
+-&gt; S10;;A3B2aA3aA3a
+-&gt; A3B2S10;;abcacac
+</code></pre>
+<p>Your input consists of line separated strings, each consisting only of uppercase letters A-Z. You need to compress each line with the above algorithm in such a way that the compressed stream is as short as possible. The final output for a line is then the <strong>product of the shortest compressed stream length and the line index (starting at 1)</strong>.</p>
+<h4>Input format</h4>
+<p>Each line in the input consists of a string using only uppercase characters A-Z.</p>
+<h4>Output format</h4>
+<p>The sum of the products of the shortest possible compression lengths and the line indices (<strong>starting at 1</strong>) for each string in the input.</p>
+<h4>Sample input</h4>
+<pre><code>A
+BBCCBBCCBBCCBBCC
+</code></pre>
+<h4>Sample output</h4>
+<p><code>30</code></p>
+
+
+<p>
+    <strong><a href="input.txt">Your input</a></strong>
+</p>
+<br />
+
+<form id="submit-form">
+    <label for="output"><strong>Your output</strong>:</label>
+    <input id="output" name="output" required autocomplete="off" />
+    <input type="submit" value="Submit" />
+</form>
+<p id="submit-feedback"></p>
+        </main>
+        <script type="module" src="/script.js"></script>
+    </body>
+</html>
