@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Autumn Code Walk</title>
+        <link rel="stylesheet" href="/style.css" />
+        <script>
+            (function () {
+                var saved = localStorage.getItem("theme");
+                var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+                document.documentElement.setAttribute("data-theme", theme);
+            })();
+        </script>
+        <script data-goatcounter="https://autumncodewalk.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    </head>
+    <body>
+        <h1>
+            <a href="/" class="header">~AUTUMN C<span class="orange">O</span>DE WALK~</a>
+        </h1>
+        <header>
+            <nav>
+                <div class="container">
+                    <a href="/profile/" class="nav-bar username">user</a>
+                    <div class="right-links">
+                        <a href="/about/" class="nav-bar">About</a>
+                        <a href="/statistics/" class="nav-bar">Statistics</a>
+                        <span class="nav-separator">|</span>
+                        <button id="theme-toggle"></button>
+                    </div>
+                </div>
+            </nav>
+            <hr />
+        </header>
+        <main>
+            <p>You are given a <strong>network of nodes</strong> and connections between them (so called <strong>edges</strong>). A <strong>path</strong> in this newtork is defined as an <strong>interchanging sequence of nodes and connecting edges</strong>: <code>n_0, E_0, n_1, ..., E_k-1, n_k</code> (starting and ending at a node) in which nodes <strong>may not</strong> repeat. The <strong>length</strong> of a path is the <strong>number of edges</strong> on it. Your task is to find the <strong>longest possible path</strong> in the given network. Note that the network contains no isolated components, meaning, there is a path connecting any two nodes.</p>
+<p>The newtork is defined as follows. Each line describes one edge via its endpoints with <strong>2 dash characters between</strong>, e.g., <code>nodeone -- nodetwo</code>. Node identifiers are strings consisting of lowercase letters only.</p>
+<h4>Input format</h4>
+<p>Each line in the input defines an edge in the network, using the format <code>nodeone -- nodetwo</code>.</p>
+<h4>Output format</h4>
+<p>The length of a longest possible path in the network.</p>
+<h4>Sample input</h4>
+<pre><code>a -- b
+a -- c
+a -- d
+e -- a
+f -- e
+g -- f
+</code></pre>
+<h4>Sample output</h4>
+<p><code>4</code></p>
+
+<p>
+    <strong><a href="input.txt">Your input</a></strong>
+</p>
+<br />
+
+<form id="submit-form">
+    <label for="output"><strong>Your output</strong>:</label>
+    <input id="output" name="output" required autocomplete="off" />
+    <input type="submit" value="Submit" />
+</form>
+<p id="submit-feedback"></p>
+        </main>
+        <script type="module" src="/script.js"></script>
+    </body>
+</html>
