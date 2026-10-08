@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Autumn Code Walk</title>
+        <link rel="stylesheet" href="/style.css" />
+        <script>
+            (function () {
+                var saved = localStorage.getItem("theme");
+                var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+                document.documentElement.setAttribute("data-theme", theme);
+            })();
+        </script>
+        <script data-goatcounter="https://autumncodewalk.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    </head>
+    <body>
+        <h1>
+            <a href="/" class="header">~AUTUMN C<span class="orange">O</span>DE WALK~</a>
+        </h1>
+        <header>
+            <nav>
+                <div class="container">
+                    <a href="/profile/" class="nav-bar username">user</a>
+                    <div class="right-links">
+                        <a href="/about/" class="nav-bar">About</a>
+                        <a href="/statistics/" class="nav-bar">Statistics</a>
+                        <span class="nav-separator">|</span>
+                        <button id="theme-toggle"></button>
+                    </div>
+                </div>
+            </nav>
+            <hr />
+        </header>
+        <main>
+            <p>You find yourself a map of a maze. It looks something like this:</p>
+<pre><code>..X..
+...*.
+.....
+.#..#
+....T
+</code></pre>
+<p>The <strong>initial position</strong> is marked with an <strong><code>X</code></strong>. From this position, you can <strong>move up, down, left, or right</strong>. Your task is to push the <strong>secret package, <code>*</code>,</strong> into the <strong>target destination, <code>T</code></strong>. Blocks marked as <strong><code>#</code> are walls</strong>, and neither you nor the secret package can pass through them.</p>
+<p>When you move adjacent to the secret package and <strong>move towards it</strong>, the package <strong>is pushed in the same direction</strong>. Hence, we can go from</p>
+<pre><code>.....
+..X*.
+.....
+.#..#
+....T
+</code></pre>
+<p>to</p>
+<pre><code>.....
+...X*
+.....
+.#..#
+....T
+</code></pre>
+<p>Pushing the package again in the same direction has no effect.</p>
+<p>Your task is to find the <strong>minimum number of steps</strong> you have to take to push the secret package into the target destination.</p>
+<h4>Input format</h4>
+<p>A rectangular grid consisting of the characters <code>.</code>, <code>#</code>, <code>X</code>, and <code>T</code>.</p>
+<h4>Output format</h4>
+<p>The minimum number of steps required to move the secret package to the target.</p>
+<h4>Sample input</h4>
+<pre><code>..X..
+...*.
+.....
+.#..#
+....T
+</code></pre>
+<h4>Sample output</h4>
+<p><code>7</code></p>
+
+
+<p>
+    <strong><a href="input.txt">Your input</a></strong>
+</p>
+<br />
+
+<form id="submit-form">
+    <label for="output"><strong>Your output</strong>:</label>
+    <input id="output" name="output" required autocomplete="off" />
+    <input type="submit" value="Submit" />
+</form>
+<p id="submit-feedback"></p>
+        </main>
+        <script type="module" src="/script.js"></script>
+    </body>
+</html>
