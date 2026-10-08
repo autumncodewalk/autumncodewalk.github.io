@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Autumn Code Walk</title>
+        <link rel="stylesheet" href="/style.css" />
+        <script>
+            (function () {
+                var saved = localStorage.getItem("theme");
+                var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+                document.documentElement.setAttribute("data-theme", theme);
+            })();
+        </script>
+        <script data-goatcounter="https://autumncodewalk.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    </head>
+    <body>
+        <h1>
+            <a href="/" class="header">~AUTUMN C<span class="orange">O</span>DE WALK~</a>
+        </h1>
+        <header>
+            <nav>
+                <div class="container">
+                    <a href="/profile/" class="nav-bar username">user</a>
+                    <div class="right-links">
+                        <a href="/about/" class="nav-bar">About</a>
+                        <a href="/statistics/" class="nav-bar">Statistics</a>
+                        <span class="nav-separator">|</span>
+                        <button id="theme-toggle"></button>
+                    </div>
+                </div>
+            </nav>
+            <hr />
+        </header>
+        <main>
+            <p>You encounter an intriguing binary file <spans title="not unlike PDF">format</spans>. Your task is to parse its structure and extract relevant information.</p>
+<p>The structure of the format is as follows: the <strong>first line contains the magic number</strong> that identifies the format. In hex notation, this is <code>c5 c7 57</code>. The next line specifies the <strong>number of referenced objects</strong> present in the file; call this number <code>N</code>. The next <code>N</code> lines are <strong>zero-padded positive integers (each has exactly 10 digits)</strong> specifying the <strong>absolute byte offsets</strong> at which the respective objects are defined. Each object's <strong>id</strong> is inferred from the order in which the offsets are enumerated, starting from 0. This part of the format is called the <strong>reference table</strong>. It may look like this:</p>
+<pre><code>3
+0000002135
+0000024352
+0000099641
+</code></pre>
+<p>The remaining part of the document contains object definitions. An <strong>object</strong> in this format can have many forms. For the purpose of this task, we will define only a subset of them.</p>
+<p><strong>Objects</strong> come in two categories: <strong>atomic</strong> and <strong>composed</strong>. Atomic objects include:</p>
+<ul>
+<li><strong>string</strong> is a sequence of characters enclosed in double quotes, <code>"</code>. Only the line feed character, <code>\n</code>, and ASCII printable characters are allowed. The backslash character, <code>\</code>, can be used for escaping: the literal sequence <code>\c</code>, for any character <code>c</code>, must be treated as the single character <code>c</code>. This is useful when double quotes or the backslash character itself need to be included in the string.</li>
+<li><strong>integer</strong> is written as one or more decimal digits, optionally preceded by a plus or minus sign.</li>
+<li><strong>boolean</strong> may be one of two values: <code>true</code> or <code>false</code>.</li>
+<li><strong>nil</strong> is a special value indicating a lack of meaningful value, written as the sequence <code>nil</code>.</li>
+</ul>
+<p>Next, we will define two composed objects:</p>
+<ul>
+<li><strong>map</strong> is a sequence of key-value pairs enclosed in curly braces <code>{...}</code>. Each key must be a <strong>string</strong>, followed by an <strong>object</strong>. The sequence <strong><code>=&gt;</code> separates</strong> keys and values. Note that map entries are separated by whitespace; <strong>no additional separator is required between key-value pairs</strong>, e.g.:</li>
+</ul>
+<pre><code>{
+  "format" =&gt; "acw"
+  "size" =&gt; 6539
+  "content" =&gt; false
+  "inner" =&gt; {"value" =&gt; 12}
+}
+</code></pre>
+<ul>
+<li><strong>array</strong> is an ordered sequence of <strong>objects</strong> enclosed in square brackets <code>[...]</code>, with elements separated by semicolons, <code>;</code>.</li>
+</ul>
+<pre><code>[11; -22; []; nil]
+</code></pre>
+<p>For readability, whitespace may be used around objects or lexical tokens. In this format, a <strong>whitespace</strong> consists only of the line feed character and the space character.</p>
+<p>Your task is to compute the <strong>fingerprint checksum</strong> for an instance of this format. Iterate through each object in the reference table, compute its <strong>fingerprint</strong>, and multiply it by the object's <strong>id</strong>. To compute the <strong>fingerprint</strong>, use the following pseudocode:</p>
+<pre><code>func fp(obj: object) -&gt; integer:
+  switch type(obj):
+  case string:
+    return len(obj)  // note that len("\"") == 1
+  case integer:
+    return abs(obj)  // absolute value
+  case boolean:
+    if obj:
+      return 1
+    else:
+      return 0
+  case nil:
+    return 31
+  case map:
+    return sum(fp(key)*fp(value) for key, value in obj.pairs()) + 3
+  case array:
+    return sum(fp(o) for o in obj) + 1
+</code></pre>
+<p>The checksum is the sum of these products of the <strong>fingerprint</strong> and the <strong>object's id</strong>.</p>
+<h4>Input format</h4>
+<p>A <strong>Base64-encoded</strong> file containing the structure defined above.</p>
+<h4>Output format</h4>
+<p>The fingerprint checksum of the file.</p>
+<h4>Sample input</h4>
+<pre><code>xcdXCjQKMDAwMDAwMDA1MQowMDAwMDAwMDU0CjAwMDAwMDAxNDQKMDAwMDAwMDE4MQoKMAoKewogICAgImtpbmQiID0+ICJyb29cdCIKICAgICJzaXplIiA9PiAxMTEKICAgICJjb250ZW50IiA9PiBmYWxzZQogICAgImVuY29kaW5nIiA9PiBuaWwKfQoKW3RydWU7IGZhbHNlOyB0cnVlOyB0cnVlOyB0cnVlOyAtMV0KCiJhY3ciCg==
+</code></pre>
+<h4>Sample output</h4>
+<p><code>732</code></p>
+
+<p>
+    <strong><a href="input.txt">Your input</a></strong>
+</p>
+<br />
+
+<form id="submit-form">
+    <label for="output"><strong>Your output</strong>:</label>
+    <input id="output" name="output" required autocomplete="off" />
+    <input type="submit" value="Submit" />
+</form>
+<p id="submit-feedback"></p>
+        </main>
+        <script type="module" src="/script.js"></script>
+    </body>
+</html>
